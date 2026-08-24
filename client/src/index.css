@@ -1,0 +1,295 @@
+/* Design direction: Quiet Confidence — clinical editorial hierarchy, generous white space, Path Blue trust, and soft green care signals. */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+}
+
+:root {
+  --radius: 0.8rem;
+  --background: oklch(0.985 0.008 170);
+  --foreground: oklch(0.24 0.025 215);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.025 215);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.025 215);
+  --primary: oklch(0.42 0.1 220);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.025 165);
+  --secondary-foreground: oklch(0.3 0.05 180);
+  --muted: oklch(0.955 0.012 175);
+  --muted-foreground: oklch(0.52 0.03 185);
+  --accent: oklch(0.91 0.06 155);
+  --accent-foreground: oklch(0.28 0.05 180);
+  --destructive: oklch(0.58 0.2 28);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.025 170);
+  --input: oklch(0.9 0.025 170);
+  --ring: oklch(0.62 0.08 165);
+  --chart-1: oklch(0.42 0.1 220);
+  --chart-2: oklch(0.64 0.1 155);
+  --chart-3: oklch(0.8 0.08 92);
+  --chart-4: oklch(0.52 0.06 195);
+  --chart-5: oklch(0.3 0.05 220);
+}
+
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(76, 145, 111, 0.35);
+  outline-offset: 3px;
+}
+
+.font-serif {
+  font-family: "DM Serif Display", Georgia, serif;
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1280px;
+    padding-inline: 3.5rem;
+  }
+}
+
+.eyebrow {
+  color: #4c916f;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.19em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-top: 1.15rem;
+  color: #17313b;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(2.65rem, 5vw, 4.6rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.section-title em {
+  color: #155e75;
+  font-style: italic;
+}
+
+.section-copy {
+  margin-top: 1.5rem;
+  max-width: 34rem;
+  color: #60797b;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.dark-section-title {
+  color: #ffffff;
+}
+
+.section-title.dark-section-title em {
+  color: #b9ddc4;
+}
+
+.section-path {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 2.25rem;
+  color: #789b93;
+}
+
+.section-path-dot {
+  display: inline-flex;
+  height: 1.7rem;
+  min-width: 1.7rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #9cc2b4;
+  border-radius: 999px;
+  background: #f8fbfa;
+  color: #4c916f;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.section-path-line {
+  height: 1px;
+  width: 2.8rem;
+  background: linear-gradient(90deg, #9cc2b4, #d1e5dc);
+}
+
+.section-path-arrow {
+  display: inline-flex;
+  color: #4c916f;
+}
+
+#providers .section-path-dot {
+  border-color: rgba(185, 221, 196, 0.65);
+  background: rgba(255, 255, 255, 0.08);
+  color: #b9ddc4;
+}
+
+#providers .section-path-line {
+  background: linear-gradient(90deg, rgba(185, 221, 196, 0.75), rgba(255, 255, 255, 0.2));
+}
+
+#providers .section-path-arrow {
+  color: #b9ddc4;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #547274;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.field-input {
+  width: 100%;
+  border: 1px solid #d6e5e0;
+  border-radius: 0.75rem;
+  background: #fbfdfc;
+  padding: 0.8rem 0.9rem;
+  color: #31545e;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 180ms ease-out, box-shadow 180ms ease-out, background-color 180ms ease-out;
+}
+
+.field-input::placeholder {
+  color: #9aafac;
+}
+
+.field-input:focus {
+  border-color: #82afa0;
+  background: #fff;
+  box-shadow: 0 0 0 4px #e2f0eb;
+}
+
+.footer-label {
+  color: #9fc0bb;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.footer-link {
+  display: block;
+  color: #c0d2cf;
+  text-align: left;
+  transition: color 150ms ease-out;
+}
+
+.footer-link:hover {
+  color: white;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .section-copy {
+    font-size: 0.95rem;
+  }
+}
